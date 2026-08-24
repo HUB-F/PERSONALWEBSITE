@@ -1,4 +1,4 @@
-console.log("FOLLYHUB SCRIPT LOADED");
+alert("FOLLYHUB SCRIPT LOADED");
 /* =========================================================
    FOLLYHUB
    INTERACTION SYSTEM
