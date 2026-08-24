@@ -1,785 +1,1091 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+    <meta charset="UTF-8">
 
-  <meta
-    name="description"
-    content="The personal website of Folawiyo Akanni — Student, Builder, and explorer of Technology, AI, Healthcare and Entrepreneurship."
-  >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <title>FollyHUB | Folawiyo Akanni</title>
+    <meta
+        name="description"
+        content="FollyHUB — The personal website of Folawiyo Akanni. Student, Builder, Technology and AI enthusiast, Healthcare enthusiast and Entrepreneur."
+    >
 
-  <link rel="stylesheet" href="style.css">
+    <title>FollyHUB | Folawiyo Akanni</title>
 
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
 </head>
+
 
 <body>
 
-  <!-- Background -->
-  <div class="background">
-    <div class="grid"></div>
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
 
-    <div class="floating-shape shape-one"></div>
-    <div class="floating-shape shape-two"></div>
-    <div class="floating-shape shape-three"></div>
-  </div>
+    <!-- =========================
+         LOADER
+    ========================== -->
 
+    <div class="loader">
 
-  <!-- Navigation -->
-  <header class="navbar">
-
-    <a href="#home" class="logo">
-      <span class="logo-dot"></span>
-      FOLLY<span>HUB</span>
-    </a>
-
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#journey">Journey</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <button
-      class="menu-btn"
-      id="menuBtn"
-      aria-label="Open navigation"
-    >
-      <span></span>
-      <span></span>
-    </button>
-
-  </header>
-
-
-  <main>
-
-    <!-- HERO -->
-    <section id="home" class="hero section">
-
-      <div class="hero-content">
-
-        <div class="hero-top">
-
-          <div class="availability">
-            <span class="status-dot"></span>
-            BUILDING MY JOURNEY
-          </div>
-
+        <div class="loader-logo">
+            FOLLY<span>HUB</span>
         </div>
 
-
-        <h1>
-          <span>FOLAWIYO</span>
-          <span class="accent">AKANNI</span>
-        </h1>
-
-
-        <div class="hero-profile">
-
-          <!-- Add your profile image later -->
-          <div class="profile-image">
-            <span>FA</span>
-          </div>
-
-          <p>
-            Student • Builder • Technology & AI<br>
-            Healthcare • Entrepreneurship
-          </p>
-
+        <div class="loader-line">
+            <span></span>
         </div>
 
+    </div>
 
-        <p class="hero-description">
-          A curious mind learning, building and exploring
-          where technology, creativity, healthcare and
-          entrepreneurship meet.
-        </p>
 
 
-        <div class="hero-buttons">
+    <!-- =========================
+         PARTICLE CANVAS
+    ========================== -->
 
-          <a href="#journey" class="btn primary-btn">
-            Explore My Journey
-            <span>↘</span>
-          </a>
+    <canvas id="particles"></canvas>
 
-          <a href="#cv" class="btn secondary-btn">
-            View CV
-          </a>
 
-        </div>
 
+    <!-- =========================
+         ANIMATED BACKGROUND
+    ========================== -->
 
-        <div class="scroll-indicator">
-          <span></span>
-          SCROLL TO EXPLORE
-        </div>
+    <div class="background">
 
-      </div>
+        <div class="grid"></div>
 
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+        <div class="glow glow-three"></div>
 
-      <!-- Decorative window -->
-      <div class="hero-window">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
 
-        <div class="window-bar">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+    </div>
 
-        <div class="window-content">
 
-          <p>SYSTEM STATUS</p>
 
-          <div class="status-row">
-            <span>STUDENT</span>
-            <strong>ACTIVE</strong>
-          </div>
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-          <div class="status-row">
-            <span>LEARNING</span>
-            <strong>ONGOING</strong>
-          </div>
+    <header class="navbar">
 
-          <div class="status-row">
-            <span>BUILDING</span>
-            <strong>IN PROGRESS</strong>
-          </div>
+        <a href="#home" class="logo">
 
-        </div>
+            <span class="logo-dot"></span>
 
-      </div>
+            FOLLY<span>HUB</span>
 
-    </section>
-
-
-
-    <!-- ABOUT -->
-    <section id="about" class="section about-section">
-
-      <div class="section-label">
-        <span>01</span>
-        ABOUT ME
-      </div>
-
-
-      <div class="about-content">
-
-        <h2>
-          Curiosity is where
-          <span>my journey begins.</span>
-        </h2>
-
-
-        <div class="about-text">
-
-          <p>
-            I am Folawiyo Akanni, a recent secondary school graduate
-            with a strong interest in technology, artificial intelligence,
-            healthcare and entrepreneurship.
-          </p>
-
-          <p>
-            I enjoy learning, creating and exploring new ideas.
-            For me, curiosity is not just about asking questions —
-            it is about following them far enough to discover
-            what can be built.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="identity-grid">
-
-        <div class="identity-item">
-          <span>01</span>
-          <h3>CURIOUS</h3>
-        </div>
-
-        <div class="identity-item">
-          <span>02</span>
-          <h3>LEARNING</h3>
-        </div>
-
-        <div class="identity-item">
-          <span>03</span>
-          <h3>BUILDING</h3>
-        </div>
-
-        <div class="identity-item">
-          <span>04</span>
-          <h3>EXPLORING</h3>
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- JOURNEY -->
-    <section id="journey" class="section journey-section">
-
-      <div class="section-label">
-        <span>02</span>
-        MY JOURNEY
-      </div>
-
-
-      <div class="journey-header">
-
-        <h2>
-          Still at the beginning.
-          <span>Already moving forward.</span>
-        </h2>
-
-      </div>
-
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-
-          <div class="timeline-number">01</div>
-
-          <div class="timeline-content">
-            <span>THE FOUNDATION</span>
-            <h3>SECONDARY SCHOOL</h3>
-
-            <p>
-              Building the foundation for the next stage
-              of my academic and personal journey.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-          <div class="timeline-number">02</div>
-
-          <div class="timeline-content">
-            <span>NOW</span>
-            <h3>EXPLORING & BUILDING</h3>
-
-            <p>
-              Exploring technology, AI, creativity,
-              coding and new possibilities.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-          <div class="timeline-number">03</div>
-
-          <div class="timeline-content">
-            <span>NEXT CHAPTER</span>
-            <h3>MEDICINE & HEALTHCARE</h3>
-
-            <p>
-              Working toward my goal of studying medicine
-              and building a future connected to healthcare.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-          <div class="timeline-number">04</div>
-
-          <div class="timeline-content">
-            <span>THE FUTURE</span>
-            <h3>AI • HEALTHCARE • BUSINESS</h3>
-
-            <p>
-              Exploring how technology, healthcare and
-              entrepreneurship can come together to create
-              meaningful solutions.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- EDUCATION -->
-    <section id="education" class="section education-section">
-
-      <div class="education-window">
-
-        <div class="window-bar">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-
-        <div class="education-content">
-
-          <div>
-            <span class="small-label">CURRENT STAGE</span>
-
-            <h2>
-              Recent Secondary
-              <span>School Graduate.</span>
-            </h2>
-          </div>
-
-
-          <div class="education-info">
-
-            <span>ACADEMIC DIRECTION</span>
-
-            <strong>
-              Aspiring Medical Student
-            </strong>
-
-            <p>
-              Preparing for the next stage of my academic
-              journey with long-term interests in medicine,
-              healthcare innovation and technology.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- SKILLS -->
-    <section id="skills" class="section skills-section">
-
-      <div class="section-label">
-        <span>03</span>
-        WHAT I'M BUILDING
-      </div>
-
-
-      <h2>
-        Skills in progress.
-        <span>Always improving.</span>
-      </h2>
-
-
-      <div class="skills-grid">
-
-        <article class="skill-card">
-
-          <div class="skill-number">01</div>
-
-          <h3>CODING</h3>
-
-          <p>
-            Developing my ability to understand,
-            create and build digital experiences.
-          </p>
-
-          <span class="skill-status">
-            CURRENTLY DEVELOPING
-          </span>
-
-        </article>
-
-
-        <article class="skill-card">
-
-          <div class="skill-number">02</div>
-
-          <h3>GRAPHIC DESIGN</h3>
-
-          <p>
-            Exploring visual communication,
-            creative design and premium digital graphics.
-          </p>
-
-          <span class="skill-status">
-            CONTINUOUSLY LEARNING
-          </span>
-
-        </article>
-
-
-        <article class="skill-card">
-
-          <div class="skill-number">03</div>
-
-          <h3>VIDEO EDITING</h3>
-
-          <p>
-            Learning how to communicate ideas
-            through visuals, motion and storytelling.
-          </p>
-
-          <span class="skill-status">
-            CURRENTLY DEVELOPING
-          </span>
-
-        </article>
-
-
-        <article class="skill-card">
-
-          <div class="skill-number">04</div>
-
-          <h3>AI & TECHNOLOGY</h3>
-
-          <p>
-            Exploring artificial intelligence and
-            how technology can be used to solve problems.
-          </p>
-
-          <span class="skill-status">
-            ACTIVELY EXPLORING
-          </span>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section projects-section">
-
-      <div class="section-label">
-        <span>04</span>
-        FEATURED PROJECT
-      </div>
-
-
-      <div class="project-window">
-
-        <div class="project-visual">
-
-          <div class="project-grid"></div>
-
-          <div class="project-tag">
-            WEB PROJECT
-          </div>
-
-          <h2>
-            OLU<span>KAYODE</span>
-            HOSPITAL
-          </h2>
-
-        </div>
-
-
-        <div class="project-info">
-
-          <span class="small-label">
-            WEBSITE DESIGN & DEVELOPMENT
-          </span>
-
-          <h3>
-            Olukayode Hospital
-            Website
-          </h3>
-
-          <p>
-            A digital website project created to present
-            hospital information, services and facilities
-            in a modern and accessible way.
-          </p>
-
-          <a
-            href="https:https://hub-f.github.io/Olukayode-hospital-/"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-          >
-            Explore Project ↗
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="more-projects">
-
-        <span>MORE PROJECTS</span>
-
-        <p>
-          New ideas are always being explored.
-          More projects will appear here as they are built.
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- GOALS -->
-    <section id="goals" class="section goals-section">
-
-      <div class="section-label">
-        <span>05</span>
-        GOALS & VISION
-      </div>
-
-
-      <h2>
-        The direction
-        <span>I'm moving toward.</span>
-      </h2>
-
-
-      <div class="goals-list">
-
-        <article class="goal-item">
-
-          <span>01</span>
-
-          <div>
-            <h3>MEDICINE</h3>
-
-            <p>
-              To study medicine and build a strong
-              future within healthcare.
-            </p>
-          </div>
-
-          <span class="goal-arrow">↗</span>
-
-        </article>
-
-
-        <article class="goal-item">
-
-          <span>02</span>
-
-          <div>
-            <h3>ARTIFICIAL INTELLIGENCE</h3>
-
-            <p>
-              To develop meaningful skills in AI
-              and understand how technology can
-              solve real problems.
-            </p>
-          </div>
-
-          <span class="goal-arrow">↗</span>
-
-        </article>
-
-
-        <article class="goal-item">
-
-          <span>03</span>
-
-          <div>
-            <h3>ENTREPRENEURSHIP</h3>
-
-            <p>
-              To build successful ideas,
-              products and businesses.
-            </p>
-          </div>
-
-          <span class="goal-arrow">↗</span>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- CURIOSITY -->
-    <section id="curiosity" class="section curiosity-section">
-
-      <div class="curiosity-orb"></div>
-
-
-      <div class="curiosity-content">
-
-        <span class="small-label">
-          A PERSONAL PRINCIPLE
-        </span>
-
-        <h2>
-          I LIKE TO
-          <span>FEED MY</span>
-          CURIOSITY.
-        </h2>
-
-        <p>
-          Every new skill, idea and challenge starts
-          with a question. I enjoy exploring what I do
-          not yet understand and turning curiosity
-          into learning.
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- CV -->
-    <section id="cv" class="section cv-section">
-
-      <div class="cv-box">
-
-        <span class="small-label">
-          CURRICULUM VITAE
-        </span>
-
-        <h2>
-          My story is still
-          <span>being written.</span>
-        </h2>
-
-        <p>
-          My CV is currently being prepared.
-          It will be available here soon.
-        </p>
-
-        <button class="btn secondary-btn disabled-btn">
-          Coming Soon
-        </button>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact-section">
-
-      <div class="contact-content">
-
-        <span class="small-label">
-          LET'S CONNECT
-        </span>
-
-        <h2>
-          Have something
-          <span>interesting to discuss?</span>
-        </h2>
-
-
-        <div class="contact-buttons">
-
-          <a
-            href="mailto:akannifolawiyo5@gmail.com"
-            class="contact-btn"
-          >
-            <span>EMAIL</span>
-            <strong>↗</strong>
-          </a>
-
-
-          <a
-            href="https://wa.me/2349013296467"
-            target="_blank"
-            rel="noopener"
-            class="contact-btn"
-          >
-            <span>WHATSAPP</span>
-            <strong>↗</strong>
-          </a>
-
-
-          <a
-            href="#"
-            class="contact-btn disabled-link"
-          >
-            <span>LINKEDIN — COMING SOON</span>
-            <strong>↗</strong>
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- FOOTER -->
-  <footer class="footer">
-
-    <div class="footer-top">
-
-      <div>
-        <a href="#home" class="footer-logo">
-          FOLLY<span>HUB</span>
         </a>
 
+
+        <nav class="nav-links">
+
+            <a href="#about">About</a>
+
+            <a href="#journey">Journey</a>
+
+            <a href="#skills">Skills</a>
+
+            <a href="#projects">Projects</a>
+
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+
+
+        <div class="nav-actions">
+
+            <button
+                class="theme-button"
+                id="themeButton"
+                aria-label="Change website color"
+            >
+                ✦
+            </button>
+
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open menu"
+            >
+
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         THEME PANEL
+    ========================== -->
+
+    <div
+        class="theme-panel"
+        id="themePanel"
+    >
+
+        <p>CHOOSE YOUR MODE</p>
+
+
+        <div class="theme-colors">
+
+            <button
+                class="theme-color active"
+                data-theme="mint"
+                aria-label="Mint theme"
+            ></button>
+
+            <button
+                class="theme-color"
+                data-theme="blue"
+                aria-label="Blue theme"
+            ></button>
+
+            <button
+                class="theme-color"
+                data-theme="purple"
+                aria-label="Purple theme"
+            ></button>
+
+            <button
+                class="theme-color"
+                data-theme="orange"
+                aria-label="Orange theme"
+            ></button>
+
+            <button
+                class="theme-color"
+                data-theme="pink"
+                aria-label="Pink theme"
+            ></button>
+
+            <button
+                class="theme-color"
+                data-theme="gold"
+                aria-label="Gold theme"
+            ></button>
+
+            <button
+                class="theme-color"
+                data-theme="silver"
+                aria-label="Silver theme"
+            ></button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         MOBILE MENU
+    ========================== -->
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="#about">About Me</a>
+
+        <a href="#journey">My Journey</a>
+
+        <a href="#skills">Skills</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#contact">Contact</a>
+
+    </div>
+
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+
+        <section
+            class="hero"
+            id="home"
+        >
+
+
+            <div class="hero-content">
+
+
+                <div class="eyebrow">
+
+                    <span></span>
+
+                    BUILDING MY JOURNEY
+
+                </div>
+
+
+
+                <div class="hero-title">
+
+                    <h1>
+                        FOLAWIYO
+                    </h1>
+
+                    <h1 class="outline">
+                        AKANNI
+                    </h1>
+
+                </div>
+
+
+
+                <div class="identity-row">
+
+                    <div class="profile-wrap">
+
+                        <div class="profile-ring"></div>
+
+                        <img
+                            src="images/profile.jpg"
+                            alt="Folawiyo Akanni"
+                            class="profile-image"
+                        >
+
+                    </div>
+
+
+                    <div class="identity-text">
+
+                        Student • Builder • Technology & AI
+
+                        <br>
+
+                        Healthcare • Entrepreneurship
+
+                    </div>
+
+                </div>
+
+
+
+                <p class="hero-description">
+
+                    A curious mind learning, building and exploring
+                    where technology, creativity, healthcare and
+                    entrepreneurship meet.
+
+                </p>
+
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#journey"
+                        class="primary-button"
+                    >
+
+                        Explore My Journey
+
+                        <span>↘</span>
+
+                    </a>
+
+
+                    <a
+                        href="cv/folawiyo-akanni-cv.pdf"
+                        class="secondary-button"
+                        target="_blank"
+                    >
+
+                        View CV
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="scroll-hint">
+
+                    <span></span>
+
+                    SCROLL TO EXPLORE
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- FLOATING HERO WINDOWS -->
+
+            <div class="hero-visual">
+
+
+                <div class="floating-window window-one">
+
+                    <span class="window-label">
+                        CURIOSITY
+                    </span>
+
+                    <strong>
+                        +∞
+                    </strong>
+
+                    <p>
+                        Always learning something new.
+                    </p>
+
+                </div>
+
+
+
+                <div class="floating-window window-two">
+
+                    <span class="window-label">
+                        FUTURE
+                    </span>
+
+                    <strong>
+                        01
+                    </strong>
+
+                    <p>
+                        Medicine • AI • Business
+                    </p>
+
+                </div>
+
+
+
+                <div class="floating-window window-three">
+
+                    <span class="window-label">
+                        FOLLYHUB
+                    </span>
+
+                    <div class="mini-orbit">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="hero-object">
+
+                    <div class="hero-object-core"></div>
+
+                    <div class="orbit-line orbit-a"></div>
+                    <div class="orbit-line orbit-b"></div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section
+            class="section about-section"
+            id="about"
+        >
+
+            <div class="section-number">
+                01
+            </div>
+
+
+            <div class="section-heading reveal">
+
+                <span>
+                    WHO I AM
+                </span>
+
+                <h2>
+                    More than one
+                    <em>direction.</em>
+                </h2>
+
+            </div>
+
+
+            <div class="about-grid">
+
+
+                <div class="about-text reveal">
+
+                    <p>
+
+                        I am <strong>Folawiyo Akanni</strong>,
+                        a student and builder interested in
+                        technology, artificial intelligence,
+                        healthcare, creativity and entrepreneurship.
+
+                    </p>
+
+
+                    <p>
+
+                        I do not believe I need to fit into only
+                        one box. I am exploring different fields,
+                        developing useful skills and building toward
+                        the future I want.
+
+                    </p>
+
+
+                    <p>
+
+                        One thing that defines me is simple:
+
+                    </p>
+
+
+                    <div class="curiosity-card">
+
+                        <span>✦</span>
+
+                        <h3>
+                            I like to feed my curiosity.
+                        </h3>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="about-stats reveal">
+
+
+                    <div class="stat-card">
+
+                        <strong>
+                            MED
+                        </strong>
+
+                        <span>
+                            Future medicine journey
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <strong>
+                            AI
+                        </strong>
+
+                        <span>
+                            Technology & artificial intelligence
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <strong>
+                            01+
+                        </strong>
+
+                        <span>
+                            Projects and counting
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             JOURNEY
+        ========================== -->
+
+        <section
+            class="section journey-section"
+            id="journey"
+        >
+
+
+            <div class="section-number">
+                02
+            </div>
+
+
+            <div class="section-heading reveal">
+
+                <span>
+                    MY JOURNEY
+                </span>
+
+                <h2>
+                    Learning.
+                    <em>Building.</em>
+                    Becoming.
+                </h2>
+
+            </div>
+
+
+
+            <div class="timeline">
+
+
+                <article class="timeline-card reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <span>
+                        NOW
+                    </span>
+
+                    <h3>
+                        Student & Explorer
+                    </h3>
+
+                    <p>
+
+                        Finished secondary school and continuing
+                        my journey toward higher education while
+                        developing practical skills.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="timeline-card reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <span>
+                        FOCUS
+                    </span>
+
+                    <h3>
+                        Medicine
+                    </h3>
+
+                    <p>
+
+                        Working toward studying medicine and
+                        developing a strong foundation for the
+                        healthcare path ahead.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="timeline-card reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <span>
+                        BUILD
+                    </span>
+
+                    <h3>
+                        Technology & AI
+                    </h3>
+
+                    <p>
+
+                        Learning how technology and artificial
+                        intelligence can become tools for creating
+                        useful ideas and solutions.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="timeline-card reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <span>
+                        FUTURE
+                    </span>
+
+                    <h3>
+                        Business & Impact
+                    </h3>
+
+                    <p>
+
+                        Building toward successful businesses
+                        and projects that create value and
+                        positively impact people.
+
+                    </p>
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             SKILLS
+        ========================== -->
+
+        <section
+            class="section skills-section"
+            id="skills"
+        >
+
+
+            <div class="section-number">
+                03
+            </div>
+
+
+            <div class="section-heading reveal">
+
+                <span>
+                    SKILLS I'M BUILDING
+                </span>
+
+                <h2>
+                    Curiosity turned into
+                    <em>capability.</em>
+                </h2>
+
+            </div>
+
+
+
+            <div class="skills-grid">
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        &lt;/&gt;
+                    </div>
+
+                    <h3>
+                        Coding
+                    </h3>
+
+                    <p>
+                        Learning to build websites and explore
+                        technology through practical projects.
+                    </p>
+
+                    <span class="skill-status">
+                        DEVELOPING
+                    </span>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Graphic Design
+                    </h3>
+
+                    <p>
+                        Creating visuals, digital designs and
+                        improving creative presentation skills.
+                    </p>
+
+                    <span class="skill-status">
+                        DEVELOPING
+                    </span>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        ▶
+                    </div>
+
+                    <h3>
+                        Video Editing
+                    </h3>
+
+                    <p>
+                        Developing editing skills and learning
+                        how to turn ideas into engaging content.
+                    </p>
+
+                    <span class="skill-status">
+                        DEVELOPING
+                    </span>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        AI
+                    </div>
+
+                    <h3>
+                        Artificial Intelligence
+                    </h3>
+
+                    <p>
+                        Exploring AI tools, technology and the
+                        possibilities they create for the future.
+                    </p>
+
+                    <span class="skill-status">
+                        EXPLORING
+                    </span>
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             PROJECTS
+        ========================== -->
+
+        <section
+            class="section projects-section"
+            id="projects"
+        >
+
+
+            <div class="section-number">
+                04
+            </div>
+
+
+            <div class="section-heading reveal">
+
+                <span>
+                    PROJECTS
+                </span>
+
+                <h2>
+                    Ideas becoming
+                    <em>real.</em>
+                </h2>
+
+            </div>
+
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-image">
+
+                    <div class="project-grid"></div>
+
+                    <span class="project-mark">
+                        OH
+                    </span>
+
+                </div>
+
+
+
+                <div class="project-content">
+
+                    <span class="project-tag">
+                        WEB PROJECT
+                    </span>
+
+                    <h3>
+                        Olukayode Hospital Website
+                    </h3>
+
+                    <p>
+
+                        A website project created to present
+                        Olukayode Hospital online with useful
+                        information, services and a modern
+                        digital presence.
+
+                    </p>
+
+
+                    <div class="project-stack">
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JAVASCRIPT</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://olukayode-oss.github.io/Olukay"
+                        target="_blank"
+                        class="project-link"
+                    >
+
+                        Visit Project ↗
+
+                    </a>
+
+                </div>
+
+
+            </article>
+
+
+
+            <div class="coming-soon reveal">
+
+                <span>+</span>
+
+                More projects are coming.
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             GOALS
+        ========================== -->
+
+        <section class="goals-section">
+
+
+            <div class="goals-inner">
+
+
+                <span class="section-label">
+                    WHAT'S NEXT
+                </span>
+
+
+                <h2 class="reveal">
+
+                    The direction is
+                    <em>forward.</em>
+
+                </h2>
+
+
+                <div class="goals-list">
+
+
+                    <div class="goal reveal">
+
+                        <span>
+                            01
+                        </span>
+
+                        Study Medicine
+
+                    </div>
+
+
+                    <div class="goal reveal">
+
+                        <span>
+                            02
+                        </span>
+
+                        Become Skilled in AI
+
+                    </div>
+
+
+                    <div class="goal reveal">
+
+                        <span>
+                            03
+                        </span>
+
+                        Build Successful Businesses
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section
+            class="contact-section"
+            id="contact"
+        >
+
+
+            <div class="contact-glow"></div>
+
+
+            <span class="section-label">
+                LET'S CONNECT
+            </span>
+
+
+            <h2 class="reveal">
+
+                Something interesting
+                <em>in mind?</em>
+
+            </h2>
+
+
+            <p class="reveal">
+
+                Reach out. I'm always open to learning,
+                exploring ideas and discovering new
+                opportunities.
+
+            </p>
+
+
+            <div class="contact-buttons reveal">
+
+
+                <a
+                    href="mailto:akannifolawiyo5@gmail.com"
+                    class="contact-button"
+                >
+
+                    Email Me
+
+                </a>
+
+
+                <a
+                    href="https://wa.me/2349013296467"
+                    target="_blank"
+                    class="contact-button"
+                >
+
+                    WhatsApp
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            FOLLY<span>HUB</span>
+
+        </div>
+
+
         <p>
-          Folawiyo Akanni
+
+            ©
+            <span id="year"></span>
+            FollyHUB. Building the journey.
+
         </p>
-      </div>
 
 
-      <p class="footer-quote">
-        Curious. Learning. Building.
-      </p>
+        <div class="footer-links">
 
-    </div>
+            <a href="#home">
+                Back to top ↑
+            </a>
+
+        </div>
 
 
-    <div class="footer-bottom">
-
-      <span>
-        © <span id="year"></span> FollyHUB.
-        All Rights Reserved.
-      </span>
-
-      <span>
-        BUILT WITH CURIOSITY
-      </span>
-
-    </div>
-
-  </footer>
+    </footer>
 
 
 
-  <script src="script.js"></script>
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
 
 </body>
+
 </html>
