@@ -1,713 +1,1000 @@
 /* =========================================================
-   FOLLYHUB — PERSONAL WEBSITE
-   Lightweight JavaScript
+   FOLLYHUB
+   INTERACTION SYSTEM
    ========================================================= */
 
 
-/* -------------------------
-   1. PAGE LOADER
-   ------------------------- */
-
-document.documentElement.classList.add("js-enabled");
+/* =========================
+   LOADER
+========================= */
 
 window.addEventListener("load", () => {
-  document.body.classList.add("page-loaded");
+
+    const loader =
+        document.querySelector(".loader");
+
+    setTimeout(() => {
+
+        loader.classList.add("hidden");
+
+    }, 1300);
+
 });
 
 
-/* -------------------------
-   2. CURRENT YEAR
-   ------------------------- */
 
-const year = document.getElementById("year");
+/* =========================
+   CURRENT YEAR
+========================= */
+
+const year =
+    document.getElementById("year");
 
 if (year) {
-  year.textContent = new Date().getFullYear();
-}
 
-
-/* -------------------------
-   3. MOBILE MENU
-   ------------------------- */
-
-const menuButton = document.querySelector(".menu-btn");
-const navLinks = document.querySelector(".nav-links");
-
-if (menuButton && navLinks) {
-
-  menuButton.addEventListener("click", () => {
-
-    navLinks.classList.toggle("mobile-open");
-
-    menuButton.classList.toggle("active");
-
-  });
-
-
-  // Close menu after clicking a link
-
-  navLinks.querySelectorAll("a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-      navLinks.classList.remove("mobile-open");
-
-      menuButton.classList.remove("active");
-
-    });
-
-  });
+    year.textContent =
+        new Date().getFullYear();
 
 }
 
 
-/* -------------------------
-   4. MOBILE MENU STYLES
-   ------------------------- */
 
-const mobileMenuStyle = document.createElement("style");
+/* =========================
+   THEME SYSTEM
+========================= */
 
-mobileMenuStyle.textContent = `
+const themeButton =
+    document.getElementById("themeButton");
 
-@media (max-width: 900px) {
+const themePanel =
+    document.getElementById("themePanel");
 
-  .nav-links.mobile-open {
-
-    position: fixed;
-
-    top: 88px;
-    left: 11px;
-    right: 11px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 0;
-
-    padding: 10px;
-
-    border: 1px solid rgba(255,255,255,.10);
-
-    border-radius: 18px;
-
-    background: rgba(8,10,14,.94);
-
-    backdrop-filter: blur(20px);
-
-    -webkit-backdrop-filter: blur(20px);
-
-    box-shadow:
-      0 25px 80px rgba(0,0,0,.45);
-
-  }
-
-  .nav-links.mobile-open a {
-
-    width: 100%;
-
-    padding: 16px;
-
-    border-bottom: 1px solid rgba(255,255,255,.07);
-
-  }
-
-  .nav-links.mobile-open a:last-child {
-
-    border-bottom: none;
-
-  }
-
-}
-
-`;
-
-document.head.appendChild(mobileMenuStyle);
+const themeColors =
+    document.querySelectorAll(".theme-color");
 
 
-/* -------------------------
-   5. SMOOTH SCROLL
-   ------------------------- */
+themeButton.addEventListener("click", () => {
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-  link.addEventListener("click", function (event) {
-
-    const targetId = this.getAttribute("href");
-
-    if (!targetId || targetId === "#") return;
-
-    const target = document.querySelector(targetId);
-
-    if (!target) return;
-
-    event.preventDefault();
-
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-  });
+    themePanel.classList.toggle("show");
 
 });
 
 
-/* -------------------------
-   6. SCROLL REVEAL
-   ------------------------- */
+/* Load saved theme */
 
-const revealElements = document.querySelectorAll(
-  ".section, .skill-card, .timeline-item, .project-window, .goal-item, .cv-box, .contact-content"
-);
+const savedTheme =
+    localStorage.getItem("follyhub-theme");
 
-if ("IntersectionObserver" in window) {
 
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
+if (savedTheme) {
 
-      entries.forEach(entry => {
+    document.body.className = "";
 
-        if (!entry.isIntersecting) return;
+    if (savedTheme !== "mint") {
 
-        entry.target.classList.add("revealed");
+        document.body.classList.add(
+            `theme-${savedTheme}`
+        );
 
-        observer.unobserve(entry.target);
-
-      });
-
-    },
-    {
-      threshold: 0.12
     }
-  );
 
 
-  revealElements.forEach(element => {
+    themeColors.forEach(button => {
 
-    element.classList.add("reveal");
+        button.classList.remove("active");
+
+        if (
+            button.dataset.theme === savedTheme
+        ) {
+
+            button.classList.add("active");
+
+        }
+
+    });
+
+}
+
+
+/* Change theme */
+
+themeColors.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const theme =
+            button.dataset.theme;
+
+
+        document.body.className = "";
+
+
+        if (theme !== "mint") {
+
+            document.body.classList.add(
+                `theme-${theme}`
+            );
+
+        }
+
+
+        localStorage.setItem(
+            "follyhub-theme",
+            theme
+        );
+
+
+        themeColors.forEach(color => {
+
+            color.classList.remove("active");
+
+        });
+
+
+        button.classList.add("active");
+
+
+        setTimeout(() => {
+
+            themePanel.classList.remove("show");
+
+        }, 300);
+
+    });
+
+});
+
+
+/* Close theme panel outside click */
+
+document.addEventListener("click", event => {
+
+    if (
+        !themePanel.contains(event.target) &&
+        !themeButton.contains(event.target)
+    ) {
+
+        themePanel.classList.remove("show");
+
+    }
+
+});
+
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+menuButton.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("show");
+
+});
+
+
+document
+    .querySelectorAll(".mobile-menu a")
+    .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            mobileMenu.classList.remove("show");
+
+        });
+
+    });
+
+
+
+/* =========================
+   SMOOTH SCROLL
+========================= */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            const targetId =
+                link.getAttribute("href");
+
+            if (targetId === "#") return;
+
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "start"
+
+            });
+
+        });
+
+    });
+
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+revealElements.forEach(element => {
 
     revealObserver.observe(element);
 
-  });
-
-}
-
-
-/* -------------------------
-   7. REVEAL STYLES
-   ------------------------- */
-
-const revealStyle = document.createElement("style");
-
-revealStyle.textContent = `
-
-.reveal {
-
-  opacity: 0;
-
-  transform:
-    translateY(35px);
-
-  transition:
-    opacity .8s ease,
-    transform .8s cubic-bezier(.22,1,.36,1);
-
-}
-
-.reveal.revealed {
-
-  opacity: 1;
-
-  transform:
-    translateY(0);
-
-}
-
-`;
-
-document.head.appendChild(revealStyle);
-
-
-/* -------------------------
-   8. STAGGERED CARDS
-   ------------------------- */
-
-document.querySelectorAll(
-  ".skills-grid, .identity-grid, .goals-list"
-).forEach(container => {
-
-  const children = Array.from(container.children);
-
-  children.forEach((child, index) => {
-
-    child.style.transitionDelay =
-      `${index * 70}ms`;
-
-  });
-
 });
 
 
-/* -------------------------
-   9. LIGHTWEIGHT 3D TILT
-   ------------------------- */
 
-const tiltElements = document.querySelectorAll(
-  ".skill-card, .education-window, .project-window"
-);
-
-
-/*
-   Only enable tilt when the device
-   actually has a mouse.
-
-   This keeps phones lightweight.
-*/
-
-if (window.matchMedia("(pointer: fine)").matches) {
-
-  tiltElements.forEach(element => {
-
-    element.addEventListener("mousemove", event => {
-
-      const rect = element.getBoundingClientRect();
-
-      const x =
-        event.clientX - rect.left;
-
-      const y =
-        event.clientY - rect.top;
-
-      const centerX =
-        rect.width / 2;
-
-      const centerY =
-        rect.height / 2;
-
-      const rotateX =
-        ((y - centerY) / centerY) * -2.5;
-
-      const rotateY =
-        ((x - centerX) / centerX) * 2.5;
-
-
-      element.style.transform =
-        `perspective(900px)
-         rotateX(${rotateX}deg)
-         rotateY(${rotateY}deg)
-         translateY(-4px)`;
-
-    });
-
-
-    element.addEventListener("mouseleave", () => {
-
-      element.style.transform = "";
-
-    });
-
-  });
-
-}
-
-
-/* -------------------------
-   10. MOUSE LIGHT
-   ------------------------- */
-
-if (window.matchMedia("(pointer: fine)").matches) {
-
-  const mouseLight = document.createElement("div");
-
-  mouseLight.className = "mouse-light";
-
-  document.body.appendChild(mouseLight);
-
-
-  const mouseLightStyle =
-    document.createElement("style");
-
-  mouseLightStyle.textContent = `
-
-    .mouse-light {
-
-      position: fixed;
-
-      width: 260px;
-      height: 260px;
-
-      border-radius: 50%;
-
-      pointer-events: none;
-
-      z-index: 9999;
-
-      transform:
-        translate(-50%, -50%);
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(140,255,178,.055),
-          transparent 65%
-        );
-
-      filter: blur(8px);
-
-      opacity: 0;
-
-      transition:
-        opacity .4s ease;
-
-    }
-
-  `;
-
-  document.head.appendChild(mouseLightStyle);
-
-
-  window.addEventListener("mousemove", event => {
-
-    mouseLight.style.left =
-      `${event.clientX}px`;
-
-    mouseLight.style.top =
-      `${event.clientY}px`;
-
-    mouseLight.style.opacity = "1";
-
-  });
-
-}
-
-
-/* -------------------------
-   11. PARALLAX BACKGROUND
-   ------------------------- */
-
-const grid = document.querySelector(".grid");
-
-if (
-  grid &&
-  window.matchMedia("(pointer: fine)").matches
-) {
-
-  window.addEventListener(
-    "mousemove",
-    event => {
-
-      const x =
-        (event.clientX / window.innerWidth - 0.5);
-
-      const y =
-        (event.clientY / window.innerHeight - 0.5);
-
-
-      grid.style.transform =
-        `perspective(700px)
-         rotateX(${58 + y * 2}deg)
-         rotateY(${x * 2}deg)
-         translateY(8%)`;
-
-    },
-    { passive: true }
-  );
-
-}
-
-
-/* -------------------------
-   12. SCROLL PROGRESS
-   ------------------------- */
+/* =========================
+   SCROLL PROGRESS
+========================= */
 
 const progressBar =
-  document.createElement("div");
+    document.createElement("div");
 
 progressBar.className =
-  "scroll-progress";
+    "scroll-progress";
 
 document.body.appendChild(progressBar);
 
 
-const progressStyle =
-  document.createElement("style");
-
-progressStyle.textContent = `
-
-.scroll-progress {
-
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 0%;
-  height: 2px;
-
-  z-index: 10000;
-
-  background: #8cffb2;
-
-  box-shadow:
-    0 0 12px rgba(140,255,178,.5);
-
-}
-
-`;
-
-document.head.appendChild(progressStyle);
-
-
 window.addEventListener(
-  "scroll",
-  () => {
+    "scroll",
 
-    const scrollTop =
-      window.scrollY;
+    () => {
 
-    const pageHeight =
-      document.documentElement.scrollHeight -
-      window.innerHeight;
+        const scrollTop =
+            window.scrollY;
 
-    const progress =
-      pageHeight > 0
-        ? (scrollTop / pageHeight) * 100
-        : 0;
+        const height =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
 
-    progressBar.style.width =
-      `${progress}%`;
 
-  },
-  { passive: true }
+        const progress =
+            height > 0
+                ? (scrollTop / height) * 100
+                : 0;
+
+
+        progressBar.style.width =
+            `${progress}%`;
+
+    },
+
+    { passive: true }
+
 );
 
 
-/* -------------------------
-   13. ACTIVE NAVIGATION
-   ------------------------- */
 
-const sections =
-  document.querySelectorAll("section[id]");
+/* =========================
+   NAVBAR SHOW / HIDE
+========================= */
 
-const navAnchors =
-  document.querySelectorAll(
-    '.nav-links a[href^="#"]'
-  );
+const navbar =
+    document.querySelector(".navbar");
 
-
-if (
-  sections.length &&
-  navAnchors.length &&
-  "IntersectionObserver" in window
-) {
-
-  const sectionObserver =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if (!entry.isIntersecting)
-            return;
+let lastScroll =
+    window.scrollY;
 
 
-          navAnchors.forEach(link => {
+window.addEventListener(
+    "scroll",
 
-            link.classList.remove("active");
+    () => {
 
-          });
-
-
-          const activeLink =
-            document.querySelector(
-              `.nav-links a[href="#${entry.target.id}"]`
-            );
+        const currentScroll =
+            window.scrollY;
 
 
-          if (activeLink) {
+        if (
 
-            activeLink.classList.add("active");
+            currentScroll > lastScroll &&
+            currentScroll > 150
 
-          }
+        ) {
 
-        });
+            navbar.classList.add("hide");
 
-      },
-      {
-        rootMargin:
-          "-35% 0px -55% 0px"
-      }
+        }
+
+        else {
+
+            navbar.classList.remove("hide");
+
+        }
+
+
+        lastScroll =
+            currentScroll;
+
+    },
+
+    { passive: true }
+
+);
+
+
+
+/* =========================
+   PARTICLE SYSTEM
+========================= */
+
+const canvas =
+    document.getElementById("particles");
+
+const ctx =
+    canvas.getContext("2d");
+
+
+let particles = [];
+
+
+function resizeCanvas() {
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+
+}
+
+
+resizeCanvas();
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+class Particle {
+
+    constructor() {
+
+        this.reset();
+
+    }
+
+
+    reset() {
+
+        this.x =
+            Math.random() * canvas.width;
+
+        this.y =
+            Math.random() * canvas.height;
+
+        this.size =
+            Math.random() * 2 + .5;
+
+        this.speedX =
+            (Math.random() - .5) * .25;
+
+        this.speedY =
+            (Math.random() - .5) * .25;
+
+        this.alpha =
+            Math.random() * .5 + .1;
+
+    }
+
+
+    update() {
+
+        this.x += this.speedX;
+
+        this.y += this.speedY;
+
+
+        if (
+
+            this.x < 0 ||
+            this.x > canvas.width ||
+            this.y < 0 ||
+            this.y > canvas.height
+
+        ) {
+
+            this.reset();
+
+        }
+
+    }
+
+
+    draw() {
+
+        const styles =
+            getComputedStyle(document.body);
+
+        const accent =
+            styles.getPropertyValue(
+                "--accent"
+            ).trim();
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+
+            this.x,
+            this.y,
+            this.size,
+
+            0,
+            Math.PI * 2
+
+        );
+
+
+        ctx.fillStyle =
+            accent;
+
+
+        ctx.globalAlpha =
+            this.alpha;
+
+
+        ctx.fill();
+
+        ctx.globalAlpha = 1;
+
+    }
+
+}
+
+
+function createParticles() {
+
+    particles = [];
+
+
+    const count =
+        window.innerWidth < 700
+            ? 35
+            : 70;
+
+
+    for (
+        let i = 0;
+        i < count;
+        i++
+    ) {
+
+        particles.push(
+            new Particle()
+        );
+
+    }
+
+}
+
+
+createParticles();
+
+
+function connectParticles() {
+
+    for (
+        let a = 0;
+        a < particles.length;
+        a++
+    ) {
+
+        for (
+            let b = a + 1;
+            b < particles.length;
+            b++
+        ) {
+
+            const dx =
+                particles[a].x -
+                particles[b].x;
+
+            const dy =
+                particles[a].y -
+                particles[b].y;
+
+
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+
+            if (distance < 100) {
+
+                ctx.beginPath();
+
+                ctx.moveTo(
+                    particles[a].x,
+                    particles[a].y
+                );
+
+
+                ctx.lineTo(
+                    particles[b].x,
+                    particles[b].y
+                );
+
+
+                ctx.strokeStyle =
+                    getComputedStyle(
+                        document.body
+                    )
+                    .getPropertyValue(
+                        "--accent"
+                    );
+
+
+                ctx.globalAlpha =
+                    .06;
+
+
+                ctx.stroke();
+
+                ctx.globalAlpha =
+                    1;
+
+            }
+
+        }
+
+    }
+
+}
+
+
+function animateParticles() {
+
+    ctx.clearRect(
+
+        0,
+        0,
+
+        canvas.width,
+        canvas.height
+
     );
 
 
-  sections.forEach(section => {
+    particles.forEach(particle => {
 
-    sectionObserver.observe(section);
+        particle.update();
 
-  });
-
-}
-
-
-/* -------------------------
-   14. ACTIVE NAV STYLE
-   ------------------------- */
-
-const activeNavStyle =
-  document.createElement("style");
-
-activeNavStyle.textContent = `
-
-.nav-links a.active {
-
-  color: #f3f6fb;
-
-}
-
-.nav-links a.active::after {
-
-  width: 100%;
-
-}
-
-`;
-
-document.head.appendChild(activeNavStyle);
-
-
-/* -------------------------
-   15. CURSOR EFFECT
-   ------------------------- */
-
-if (window.matchMedia("(pointer: fine)").matches) {
-
-  const cursor =
-    document.createElement("div");
-
-  cursor.className =
-    "custom-cursor";
-
-  document.body.appendChild(cursor);
-
-
-  const cursorStyle =
-    document.createElement("style");
-
-  cursorStyle.textContent = `
-
-.custom-cursor {
-
-  position: fixed;
-
-  width: 8px;
-  height: 8px;
-
-  border-radius: 50%;
-
-  pointer-events: none;
-
-  z-index: 10001;
-
-  background: #8cffb2;
-
-  box-shadow:
-    0 0 15px rgba(140,255,178,.7);
-
-  transform:
-    translate(-50%, -50%);
-
-  opacity: 0;
-
-  transition:
-    width .25s ease,
-    height .25s ease,
-    opacity .25s ease;
-
-}
-
-.custom-cursor.big {
-
-  width: 36px;
-  height: 36px;
-
-  background:
-    rgba(140,255,178,.08);
-
-  border:
-    1px solid rgba(140,255,178,.5);
-
-}
-
-`;
-
-  document.head.appendChild(cursorStyle);
-
-
-  window.addEventListener(
-    "mousemove",
-    event => {
-
-      cursor.style.left =
-        `${event.clientX}px`;
-
-      cursor.style.top =
-        `${event.clientY}px`;
-
-      cursor.style.opacity = "1";
-
-    }
-  );
-
-
-  document
-    .querySelectorAll("a, button, .skill-card")
-    .forEach(element => {
-
-      element.addEventListener(
-        "mouseenter",
-        () => {
-          cursor.classList.add("big");
-        }
-      );
-
-
-      element.addEventListener(
-        "mouseleave",
-        () => {
-          cursor.classList.remove("big");
-        }
-      );
+        particle.draw();
 
     });
 
+
+    connectParticles();
+
+
+    requestAnimationFrame(
+        animateParticles
+    );
+
 }
 
 
-/* -------------------------
-   16. IMAGE LAZY LOADING
-   ------------------------- */
+animateParticles();
 
-document
-  .querySelectorAll("img")
-  .forEach(image => {
 
-    image.loading = "lazy";
+
+/* =========================
+   HERO TOUCH PARALLAX
+========================= */
+
+const hero =
+    document.querySelector(".hero");
+
+const heroVisual =
+    document.querySelector(".hero-visual");
+
+
+let targetX = 0;
+let targetY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+
+hero.addEventListener(
+    "touchmove",
+
+    event => {
+
+        const touch =
+            event.touches[0];
+
+
+        targetX =
+            touch.clientX /
+            window.innerWidth -
+            .5;
+
+
+        targetY =
+            touch.clientY /
+            window.innerHeight -
+            .5;
+
+    },
+
+    { passive: true }
+
+);
+
+
+hero.addEventListener(
+    "mousemove",
+
+    event => {
+
+        if (
+            window.matchMedia(
+                "(pointer: fine)"
+            ).matches
+        ) {
+
+            targetX =
+                event.clientX /
+                window.innerWidth -
+                .5;
+
+
+            targetY =
+                event.clientY /
+                window.innerHeight -
+                .5;
+
+        }
+
+    }
+
+);
+
+
+function animateHeroParallax() {
+
+    currentX +=
+        (targetX - currentX) * .05;
+
+    currentY +=
+        (targetY - currentY) * .05;
+
+
+    if (heroVisual) {
+
+        heroVisual.style.transform =
+            `translate(
+                ${currentX * 12}px,
+                ${currentY * 12}px
+            )`;
+
+    }
+
+
+    requestAnimationFrame(
+        animateHeroParallax
+    );
+
+}
+
+
+animateHeroParallax();
+
+
+
+/* =========================
+   FLOATING CARD TOUCH EFFECT
+========================= */
+
+const interactiveCards =
+    document.querySelectorAll(
+
+        ".skill-card, " +
+        ".timeline-card, " +
+        ".stat-card, " +
+        ".project-card"
+
+    );
+
+
+interactiveCards.forEach(card => {
+
+    card.addEventListener(
+        "touchstart",
+
+        () => {
+
+            card.style.transform =
+                "scale(.98)";
+
+        },
+
+        { passive: true }
+
+    );
+
+
+    card.addEventListener(
+        "touchend",
+
+        () => {
+
+            setTimeout(() => {
+
+                card.style.transform =
+                    "";
+
+            }, 150);
+
+        },
+
+        { passive: true }
+
+    );
 
 });
 
 
-/* -------------------------
-   17. CONSOLE SIGNATURE
-   ------------------------- */
+/* =========================
+   DESKTOP CARD TILT
+========================= */
+
+if (
+
+    window.matchMedia(
+        "(pointer: fine)"
+    ).matches
+
+) {
+
+    document
+        .querySelectorAll(
+            ".skill-card, .stat-card"
+        )
+
+        .forEach(card => {
+
+            card.addEventListener(
+                "mousemove",
+
+                event => {
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+
+                    const x =
+                        event.clientX -
+                        rect.left;
+
+
+                    const y =
+                        event.clientY -
+                        rect.top;
+
+
+                    const rotateY =
+                        ((x / rect.width) - .5) * 6;
+
+
+                    const rotateX =
+                        ((y / rect.height) - .5) * -6;
+
+
+                    card.style.transform =
+                        `perspective(700px)
+                        rotateX(${rotateX}deg)
+                        rotateY(${rotateY}deg)
+                        translateY(-8px)`;
+
+                }
+
+            );
+
+
+            card.addEventListener(
+                "mouseleave",
+
+                () => {
+
+                    card.style.transform =
+                        "";
+
+                }
+
+            );
+
+        });
+
+}
+
+
+
+/* =========================
+   SCROLL DEPTH EFFECT
+========================= */
+
+window.addEventListener(
+    "scroll",
+
+    () => {
+
+        const scroll =
+            window.scrollY;
+
+
+        const grid =
+            document.querySelector(".grid");
+
+
+        if (grid) {
+
+            grid.style.transform =
+                `perspective(700px)
+                rotateX(62deg)
+                translateY(${scroll * .03}px)`;
+
+        }
+
+
+        const glows =
+            document.querySelectorAll(".glow");
+
+
+        glows.forEach(
+
+            (glow, index) => {
+
+                const movement =
+                    scroll *
+                    (0.02 + index * 0.01);
+
+
+                glow.style.marginTop =
+                    `${movement}px`;
+
+            }
+
+        );
+
+    },
+
+    { passive: true }
+
+);
+
+
+
+/* =========================
+   HERO TITLE ENTRANCE
+========================= */
+
+const heroElements = [
+
+    ".eyebrow",
+
+    ".hero-title h1",
+
+    ".identity-row",
+
+    ".hero-description",
+
+    ".hero-buttons",
+
+    ".scroll-hint",
+
+    ".hero-visual"
+
+];
+
+
+heroElements.forEach(
+
+    (selector, index) => {
+
+        document
+            .querySelectorAll(selector)
+            .forEach(element => {
+
+                element.style.opacity =
+                    "0";
+
+
+                element.style.transform =
+                    "translateY(30px)";
+
+
+                setTimeout(() => {
+
+                    element.style.transition =
+                        "opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1)";
+
+
+                    element.style.opacity =
+                        "1";
+
+
+                    element.style.transform =
+                        "translateY(0)";
+
+                },
+
+                300 + index * 130
+
+                );
+
+            });
+
+    }
+
+);
+
+
+
+/* =========================
+   CONSOLE
+========================= */
 
 console.log(
-  "%cFollyHUB",
-  "font-size:24px;font-weight:bold;"
+    "FOLLYHUB"
 );
 
 console.log(
-  "Student • Builder • Technology & AI • Healthcare • Entrepreneurship"
+    "Student • Builder • Technology & AI • Healthcare • Entrepreneurship"
 );
