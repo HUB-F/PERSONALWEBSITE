@@ -1,4 +1,4 @@
-alert("FOLLYHUB SCRIPT LOADED");
+
 /* =========================================================
    FOLLYHUB
    INTERACTION SYSTEM
@@ -9,16 +9,17 @@ alert("FOLLYHUB SCRIPT LOADED");
    LOADER
 ========================= */
 
-window.addEventListener("load", () => {
+const loader = document.querySelector(".loader");
 
-    const loader =
-        document.querySelector(".loader");
+window.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
 
-        loader.classList.add("hidden");
+        if (loader) {
+            loader.classList.add("hidden");
+        }
 
-    }, 1300);
+    }, 1500);
 
 });
 
