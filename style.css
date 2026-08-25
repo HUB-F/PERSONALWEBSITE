@@ -169,11 +169,6 @@ button {
 
 }
 
-.loader {
-    display: none !important;
-}
-
-
 .loader.hidden {
 
     opacity: 0;
